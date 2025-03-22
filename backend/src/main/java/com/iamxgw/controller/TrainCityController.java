@@ -3,7 +3,6 @@ package com.iamxgw.controller;
 import com.iamxgw.common.JsonData;
 import com.iamxgw.param.TrainCityParam;
 import com.iamxgw.service.TrainCityService;
-import com.iamxgw.util.BeanValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,7 +36,6 @@ public class TrainCityController {
     @RequestMapping("/save.json")
     @ResponseBody
     public JsonData save(TrainCityParam param) {
-
         return JsonData.success();
     }
 

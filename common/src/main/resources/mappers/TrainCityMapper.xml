@@ -62,7 +62,6 @@
         <include refid="Base_Column_List"/>
         from train_city
     </select>
-
     <select id="countByNameAndId" parameterType="map" resultType="int">
         select count(*)
         from train_city

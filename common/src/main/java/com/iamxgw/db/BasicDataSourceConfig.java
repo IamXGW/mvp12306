@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -45,6 +46,7 @@ public class BasicDataSourceConfig {
         return DataSourceBuilder.create().build();
     }
 
+    @Bean(name = "masterSlaveDataSource")
     public DataSource masterSlaveDataSource(@Qualifier(DataSources.MASTER_DB) DataSource masterDB,
                                             @Qualifier(DataSources.SLAVE_DB) DataSource slaveDB) throws SQLException {
         Map<String, DataSource> dataSourceMap = Maps.newHashMap();

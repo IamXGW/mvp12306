@@ -1,6 +1,9 @@
 package com.iamxgw.dao;
 
 import com.iamxgw.model.TrainStation;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TrainStationMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,8 @@ public interface TrainStationMapper {
     int updateByPrimaryKeySelective(TrainStation record);
 
     int updateByPrimaryKey(TrainStation record);
+
+    List<TrainStation> getAll();
+
+    int countByIdAndNameAndCityId(@Param("name") String name, @Param("stationId") Integer stationId, @Param("cityId") Integer cityId);
 }

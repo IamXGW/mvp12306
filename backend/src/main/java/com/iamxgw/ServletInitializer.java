@@ -1,4 +1,4 @@
-package com.iamxgw.backend;
+package com.iamxgw;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

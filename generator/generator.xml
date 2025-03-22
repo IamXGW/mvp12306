@@ -29,12 +29,12 @@
                          targetProject="/Users/xuguangwei/Documents/JavaProjects/MVP12306/MVP12306/generator/src">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
-        <!-- 生成DAO的包名和位置 -->
+        <!-- 生成 DAO 的包名和位置 -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.iamxgw.dao"
                              targetProject="/Users/xuguangwei/Documents/JavaProjects/MVP12306/MVP12306/generator/src">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-        <!-- 要生成哪些表(更改tableName和domainObjectName就可以) -->
+        <!-- 要生成哪些表(更改 tableName 和 domainObjectName 就可以) -->
 
         <!--        <table tableName="sys_user" domainObjectName="SysUser" enableCountByExample="false"-->
         <!--               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->

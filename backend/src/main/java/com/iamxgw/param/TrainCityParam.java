@@ -1,9 +1,9 @@
 package com.iamxgw.param;
 
 /**
- * @description:
- * @author: IamXGW
- * @create: 2024-07-14 13:23
+ * 
+ * @author IamXGW
+ *@since 2024-07-14 13:23
  */
 
 import lombok.Getter;

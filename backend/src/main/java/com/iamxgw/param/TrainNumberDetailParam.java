@@ -10,9 +10,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
- * @description:
- * @author: IamXGW
- * @create: 2024-07-14 14:22
+ * 
+ * @author IamXGW
+ *@since 2024-07-14 14:22
  */
 @Getter
 @Setter

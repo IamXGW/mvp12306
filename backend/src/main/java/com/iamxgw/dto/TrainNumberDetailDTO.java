@@ -6,10 +6,11 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @description:
- * @author: IamXGW
- * @create: 2024-07-13 14:34
+ *
+ * @author IamXGW
+ *@since 2024-07-13 14:34
  */
+
 @ToString
 public class TrainNumberDetailDTO extends TrainNumberDetail {
 

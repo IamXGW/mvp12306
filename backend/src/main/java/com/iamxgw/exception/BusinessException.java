@@ -1,9 +1,9 @@
 package com.iamxgw.exception;
 
 /**
- * @description: 业务异常类
- * @author: IamXGW
- * @create: 2024-07-10 20:13
+ *  业务异常类
+ * @author IamXGW
+ *@since 2024-07-10 20:13
  */
 public class BusinessException extends RuntimeException{
     public BusinessException() {

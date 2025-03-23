@@ -6,9 +6,9 @@ import io.shardingsphere.api.algorithm.sharding.standard.PreciseShardingAlgorith
 import java.util.Collection;
 
 /**
- * @description:
- * @author: IamXGW
- * @create: 2024-07-07 21:43
+ * 
+ * @author IamXGW
+ *@since 2024-07-07 21:43
  */
 public class TrainSeatTableShardingAlgorithm implements PreciseShardingAlgorithm<Integer> {
     private final static String PREFIX = "train_Seat_";

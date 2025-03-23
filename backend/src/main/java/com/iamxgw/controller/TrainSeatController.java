@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * @description:
- * @author: IamXGW
- * @create: 2024-07-24 20:36
+ * 
+ * @author IamXGW
+ *@since 2024-07-24 20:36
  */
 @Controller
 @RequestMapping("/admin/train/seat")

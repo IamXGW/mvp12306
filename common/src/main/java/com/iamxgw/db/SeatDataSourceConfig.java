@@ -25,9 +25,9 @@ import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @description:
- * @author: IamXGW
- * @create: 2024-07-03 22:22
+ * 
+ * @author IamXGW
+ *@since 2024-07-03 22:22
  */
 @Configuration
 @MapperScan(basePackages = "com.iamxgw.seatDao", sqlSessionTemplateRef = "trainSeatSqlSessionTemplate")

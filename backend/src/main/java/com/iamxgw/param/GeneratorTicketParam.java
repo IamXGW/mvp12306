@@ -8,9 +8,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
- * @description:
- * @author: IamXGW
- * @create: 2024-07-24 20:41
+ * 
+ * @author IamXGW
+ *@since 2024-07-24 20:41
  */
 @Getter
 @Setter

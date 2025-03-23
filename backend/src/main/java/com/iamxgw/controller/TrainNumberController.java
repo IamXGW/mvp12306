@@ -18,9 +18,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * @description: 车次
- * @author: IamXGW
- * @create: 2024-07-10 20:58
+ *  车次
+ * @author IamXGW
+ *@since 2024-07-10 20:58
  */
 @Controller
 @RequestMapping("/admin/train/number")

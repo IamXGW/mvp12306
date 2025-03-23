@@ -25,9 +25,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @description:
- * @author: IamXGW
- * @create: 2024-07-24 20:42
+ * 
+ * @author IamXGW
+ *@since 2024-07-24 20:42
  */
 @Service
 public class TrainSeatService {

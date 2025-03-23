@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @description:`
- * @author: IamXGW
- * @create: 2024-07-16 21:46
+ * `
+ * @author IamXGW
+ *@since 2024-07-16 21:46
  */
 public class TrainTypeSeatConstant {
 

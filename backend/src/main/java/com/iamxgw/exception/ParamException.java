@@ -3,7 +3,7 @@ package com.iamxgw.exception;
 /**
  * 
  * @author IamXGW
- *@since 2024-07-10 20:13
+ * @since 2024-07-10 20:13
  */
 public class ParamException extends RuntimeException{
     public ParamException() {

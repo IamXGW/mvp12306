@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 /**
  *  车次详情
  * @author IamXGW
- *@since 2024-07-10 20:57
+ * @since 2024-07-10 20:57
  */
 @Controller
 @RequestMapping("/admin/train/numberDetail")

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * 
  * @author IamXGW
- *@since 2024-07-24 20:36
+ * @since 2024-07-24 20:36
  */
 @Controller
 @RequestMapping("/admin/train/seat")

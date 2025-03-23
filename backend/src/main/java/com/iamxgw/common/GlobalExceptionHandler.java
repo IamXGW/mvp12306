@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  *  全局异常处理类
  * @author IamXGW
- *@since 2024-07-10 20:15
+ * @since 2024-07-10 20:15
  */
 @ControllerAdvice
 @Slf4j

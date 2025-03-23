@@ -27,7 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 
  * @author IamXGW
- *@since 2024-07-03 22:22
+ * @since 2024-07-03 22:22
  */
 @Configuration
 @MapperScan(basePackages = "com.iamxgw.seatDao", sqlSessionTemplateRef = "trainSeatSqlSessionTemplate")

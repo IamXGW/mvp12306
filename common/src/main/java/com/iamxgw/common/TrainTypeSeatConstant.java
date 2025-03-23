@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * `
  * @author IamXGW
- *@since 2024-07-16 21:46
+ * @since 2024-07-16 21:46
  */
 public class TrainTypeSeatConstant {
 

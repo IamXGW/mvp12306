@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- *  约定：页面的接口，以 .page 结尾
+ * 约定：页面的接口，以 .page 结尾
  * @author IamXGW
- * @create 2024-07-10 20:27
+ *  @since 2024-07-10 20:27
  */
 @Controller
 public class AdminController {
@@ -46,7 +46,7 @@ public class AdminController {
      * 在登录页面执行登录操作（之后也要跳转页面）
      *
      * @author IamXGW
-     * @since 2025/3/23
+     *  @since 2025/3/23
      */
     @RequestMapping("/mockLogin.page")
     public void mockLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

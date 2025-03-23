@@ -8,7 +8,7 @@ import java.util.Collection;
 /**
  * 
  * @author IamXGW
- *@since 2024-07-07 21:43
+ * @since 2024-07-07 21:43
  */
 public class TrainSeatTableShardingAlgorithm implements PreciseShardingAlgorithm<Integer> {
     private final static String PREFIX = "train_Seat_";

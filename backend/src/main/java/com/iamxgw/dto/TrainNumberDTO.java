@@ -8,7 +8,7 @@ import lombok.ToString;
 /**
  * 
  * @author IamXGW
- *@since 2024-07-13 14:34
+ * @since 2024-07-13 14:34
  */
 @ToString
 public class TrainNumberDTO extends TrainNumber {

@@ -23,7 +23,7 @@ public class BeanValidator {
 
     public static <T> Map<String, String> validate(T t, Class... groups) {
         Validator validator = validatorFactory.getValidator();
-        Set validateResult = validator.validate(t, groups);
+        Set<ConstraintViolation<T>> validateResult = validator.validate(t, groups);
         if (validateResult.isEmpty()) {
             return Collections.emptyMap();
         } else {

@@ -52,6 +52,7 @@ public class TrainNumberDetailService {
                 .toCityId(trainStationService.getCityIdByStationId(param.getToStationId()))
                 .build();
         trainNumberDetailMapper.insertSelective(trainNumberDetail);
+        // 如果是最后一个车次详情，更新车次的起始站点和终点站点
         if (param.getEnd() == 1) {
             detailList.add(trainNumberDetail);
             trainNumber.setFromStationId(detailList.get(0).getFromStationId());

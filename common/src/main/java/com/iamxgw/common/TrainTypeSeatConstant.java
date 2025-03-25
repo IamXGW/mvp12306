@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class TrainTypeSeatConstant {
 
-    // <车厢 carriage、排 row、座位 Pairs>
+    // <车厢 carriage、排 row、座位范围 seat pair>
     private static Table<Integer, Integer, Pair<Integer, Integer>> crh2Table
             = HashBasedTable.create();
 
@@ -24,11 +24,11 @@ public class TrainTypeSeatConstant {
     private static Table<Integer, Integer, Integer> crh2SpecialTable
             = HashBasedTable.create();
 
-    // 车厢数，与 idx 对应，每个值表示每一节车厢的排数
+    // 每车厢排数，车厢数与 idx 对应，每个值表示每一节车厢的排数
     private static List<Integer> crh2CarriageRowTotal
             = Lists.newArrayList(0, 11, 20, 17, 20, 11, 20, 13, 13, 11, 20, 17, 20, 11, 20, 13, 13);
 
-    // <车厢 carriage、排 row、座位 Pairs>
+    // <车厢 carriage、排 row、座位范围 seat pair>
     private static Table<Integer, Integer, Pair<Integer, Integer>> crh5Table
             = HashBasedTable.create();
 
@@ -36,10 +36,11 @@ public class TrainTypeSeatConstant {
     private static Table<Integer, Integer, Integer> crh5SpecialTable
             = HashBasedTable.create();
 
-    // 车厢数，与 idx 对应，每个值表示每一节车厢的排数
+    // 每车厢排数，车厢数与 idx 对应，每个值表示每一节车厢的排数
     private static List<Integer> crh5CarriageRowTotal
             = Lists.newArrayList(0, 15, 19, 19, 19, 19, 9, 16, 15, 15, 19, 19, 19, 19, 9, 16, 15);
 
+    // 车厢的座位 <类型、Table>
     private static Map<TrainType, Table<Integer, Integer, Pair<Integer, Integer>>> carriageMap = Maps.newConcurrentMap();
 
     // 车厢的座位等级 <类型、车厢、座位等级>
@@ -56,13 +57,17 @@ public class TrainTypeSeatConstant {
         crh2SpecialTable.put(8, 1, 4);
         crh2SpecialTable.put(16, 1, 4);
 
+        // 遍历每节车厢，初始化每节车厢的座位
         for (int carriage = 1; carriage < crh2CarriageRowTotal.size(); ++carriage) {
             int order = 0;
+            // 遍历每节车厢的每排，初始化每排的座位
             for (int row = 1; row <= crh2CarriageRowTotal.get(carriage); ++row) {
                 int count = 5;
+                // 如果是特殊的座位，就取特殊的座位数
                 if (crh2SpecialTable.contains(carriage, row)) {
                     count = crh2SpecialTable.get(carriage, row);
                 }
+                // 每排的座位范围
                 crh2Table.put(carriage, row, new Pair<>(order + 1, order + count));
                 order += count;
             }

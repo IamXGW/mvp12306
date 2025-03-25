@@ -1,10 +1,5 @@
 package com.iamxgw.param;
 
-/**
- * 
- * @author IamXGW
- * @since 2024-07-14 13:23
- */
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +7,10 @@ import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
-
+/**
+ * @author IamXGW
+ * @since 2024-07-14 13:23
+ */
 @Getter
 @Setter
 @ToString

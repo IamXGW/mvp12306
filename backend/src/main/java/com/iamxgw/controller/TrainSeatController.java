@@ -2,10 +2,13 @@ package com.iamxgw.controller;
 
 import com.iamxgw.common.JsonData;
 import com.iamxgw.param.GeneratorTicketParam;
+import com.iamxgw.service.TrainSeatService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.annotation.Resource;
 
 /**
  * 
@@ -15,6 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/admin/train/seat")
 public class TrainSeatController {
+
+    @Resource
+    TrainSeatService trainSeatService;
 
     @RequestMapping("list.page")
     public ModelAndView page() {
@@ -30,6 +36,7 @@ public class TrainSeatController {
     @RequestMapping("generate.json")
     @ResponseBody
     public JsonData generate(GeneratorTicketParam param) {
+        trainSeatService.generate(param);
         return JsonData.success();
     }
 }

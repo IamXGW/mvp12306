@@ -53,7 +53,8 @@ public class TrainNumberService {
                 .name(param.getName())
                 .trainType(param.getTrainType())
                 .type(param.getType().shortValue())
-                .seatNum(TrainType.valueOf(param.getTrainType()).getCount()) // TODO
+                // TODO
+                .seatNum(TrainType.valueOf(param.getTrainType()).getCount())
                 .build();
         trainNumberMapper.updateByPrimaryKeySelective(trainNumber);
     }

@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
+/**
+ * @author xuguangwei
+ */
 @Data
 @Builder
 @NoArgsConstructor

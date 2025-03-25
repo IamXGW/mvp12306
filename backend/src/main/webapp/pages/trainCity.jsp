@@ -66,19 +66,19 @@
 
 
 <script id="cityListTemplate" type="x-tmpl-mustache">
-{{#cityList}}
-<tr role="row" class="city-name odd" data-id="{{id}}"><!--even -->
-    <td><a href="#" class="city-edit" data-id="{{id}}">{{id}}</a></td>
-    <td><a href="#" class="city-edit" data-id="{{id}}">{{name}}</a></td>
-    <td>
-        <div class="hidden-sm hidden-xs action-buttons">
-            <a class="green city-edit" href="#" data-id="{{id}}">
-                <i class="ace-icon fa fa-pencil bigger-100"></i>
-            </a>
-        </div>
-    </td>
-</tr>
-{{/cityList}}
+    {{#cityList}}
+    <tr role="row" class="city-name odd" data-id="{{id}}"><!--even -->
+        <td><a href="#" class="city-edit" data-id="{{id}}">{{id}}</a></td>
+        <td><a href="#" class="city-edit" data-id="{{id}}">{{name}}</a></td>
+        <td>
+            <div class="hidden-sm hidden-xs action-buttons">
+                <a class="green city-edit" href="#" data-id="{{id}}">
+                    <i class="ace-icon fa fa-pencil bigger-100"></i>
+                </a>
+            </div>
+        </td>
+    </tr>
+    {{/cityList}}
 </script>
 
 <script type="application/javascript">
@@ -144,7 +144,6 @@
                 });
             })
         }
-
 
         $(".city-add").click(function() {
             $("#dialog-city-form").dialog({

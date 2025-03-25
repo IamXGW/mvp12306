@@ -2,6 +2,10 @@ package com.iamxgw.common;
 
 import lombok.Getter;
 
+/**
+ * @author xuguangwei
+ */
+
 @Getter
 public enum TrainSeatLevel {
 
@@ -9,8 +13,8 @@ public enum TrainSeatLevel {
     GRAND_1(1, "一等座，1 排 4 座"),
     GRAND_2(2, "二等座，1 排 5 座");
 
-    int level;
-    String desc;
+    final int level;
+    final String desc;
 
     TrainSeatLevel(int level, String desc) {
         this.level = level;

@@ -1,7 +1,6 @@
 package com.iamxgw.controller;
 
 import com.iamxgw.common.JsonData;
-import com.iamxgw.dto.TrainNumberDTO;
 import com.iamxgw.dto.TrainNumberDetailDTO;
 import com.iamxgw.model.TrainNumber;
 import com.iamxgw.model.TrainNumberDetail;
@@ -22,7 +21,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- *  车次详情
+ * 车次详情
+ *
  * @author IamXGW
  * @since 2024-07-10 20:57
  */

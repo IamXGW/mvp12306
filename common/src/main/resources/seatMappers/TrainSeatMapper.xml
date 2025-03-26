@@ -221,4 +221,59 @@
       to_station_id = #{toStationId,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <insert id="batchInsert" parameterType="list">
+    insert into train_seat (ticket, train_number_id, carriage_number,
+    row_number, seat_number, seat_level,
+    train_start, train_end, money,
+    show_number, status, from_station_id,
+    to_station_id)
+    values
+    <foreach collection="list" item="detail" separator=",">
+      (#{detail.ticket,jdbcType=VARCHAR}, #{detail.trainNumberId,jdbcType=INTEGER},
+      #{detail.carriageNumber,jdbcType=INTEGER},
+      #{detail.rowNumber,jdbcType=INTEGER}, #{detail.seatNumber,jdbcType=INTEGER}, #{detail.seatLevel,jdbcType=INTEGER},
+      #{detail.trainStart,jdbcType=TIMESTAMP}, #{detail.trainEnd,jdbcType=TIMESTAMP}, #{detail.money,jdbcType=INTEGER},
+      #{detail.showNumber,jdbcType=VARCHAR}, #{detail.status,jdbcType=INTEGER},
+      #{detail.fromStationId,jdbcType=INTEGER},
+      #{detail.toStationId,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+  <select id="searchList" parameterType="map" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+      from train_seat
+      where train_number_id = #{trainNumberId,jdbcType=INTEGER}
+      and ticket = #{ticket,jdbcType=VARCHAR}
+      <if test="status != null">
+          and status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="carriageNum != null">
+          and carriage_number = #{carriageNum,jdbcType=INTEGER}
+      </if>
+      <if test="rowNum != null">
+          and row_number = #{rowNum,jdbcType=INTEGER}
+      </if>
+      <if test="seatNum != null">
+          and seat_number = #{seatNum,jdbcType=INTEGER}
+      </if>
+      limit #{offset}, #{pageSize}
+  </select>
+  <select id="countList" parameterType="map" resultType="int">
+      select count(1)
+      from train_seat
+      where train_number_id = #{trainNumberId,jdbcType=INTEGER}
+      and ticket = #{ticket,jdbcType=VARCHAR}
+      <if test="status != null">
+          and status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="carriageNum != null">
+          and carriage_number = #{carriageNum,jdbcType=INTEGER}
+      </if>
+      <if test="rowNum != null">
+          and row_number = #{rowNum,jdbcType=INTEGER}
+      </if>
+      <if test="seatNum != null">
+          and seat_number = #{seatNum,jdbcType=INTEGER}
+      </if>
+  </select>
 </mapper>

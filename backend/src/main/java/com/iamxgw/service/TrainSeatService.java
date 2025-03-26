@@ -4,6 +4,7 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
+import com.iamxgw.beans.PageQuery;
 import com.iamxgw.common.TrainSeatLevel;
 import com.iamxgw.common.TrainType;
 import com.iamxgw.common.TrainTypeSeatConstant;
@@ -14,6 +15,7 @@ import com.iamxgw.model.TrainNumber;
 import com.iamxgw.model.TrainNumberDetail;
 import com.iamxgw.model.TrainSeat;
 import com.iamxgw.param.GeneratorTicketParam;
+import com.iamxgw.param.TrainSeatSearchParam;
 import com.iamxgw.seatDao.TrainSeatMapper;
 import com.iamxgw.util.BeanValidator;
 import javafx.util.Pair;
@@ -27,7 +29,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Spliterator;
 
 /**
  * @author IamXGW
@@ -44,6 +45,31 @@ public class TrainSeatService {
 
     @Resource
     private TrainSeatMapper trainSeatMapper;
+
+    @Resource
+    private TransactionService transactionService;
+
+    public List<TrainSeat> searchList(TrainSeatSearchParam param, PageQuery pageQuery) {
+        BeanValidator.check(param);
+        BeanValidator.check(pageQuery);
+        TrainNumber trainNumber = trainNumberMapper.findByName(param.getTrainNumber());
+        if (trainNumber == null) {
+            throw new BusinessException("该车次不存在");
+        }
+        return trainSeatMapper.searchList(trainNumber.getId(), param.getTicket(), param.getStatus(),
+                param.getCarriageNum(), param.getRowNum(), param.getSeatNum(),
+                pageQuery.getOffset(), pageQuery.getPageSize());
+    }
+
+    public int countList(TrainSeatSearchParam param) {
+        BeanValidator.check(param);
+        TrainNumber trainNumber = trainNumberMapper.findByName(param.getTrainNumber());
+        if (trainNumber == null) {
+            throw new BusinessException("待查询的车次不存在");
+        }
+        return trainSeatMapper.countList(trainNumber.getId(), param.getTicket(), param.getStatus(),
+                param.getCarriageNum(), param.getRowNum(), param.getSeatNum());
+    }
 
     public void generate(GeneratorTicketParam param) {
         BeanValidator.check(param);
@@ -104,14 +130,17 @@ public class TrainSeatService {
                     list.add(trainSeat);
                 }
             }
+            fromLocalDateTime = fromLocalDateTime.plusMinutes(trainNumberDetail.getRelativeMinute()
+                    + trainNumberDetail.getWaitMinute());
         }
+        transactionService.batchInsertSeat(list);
     }
 
     /**
      * 处理车次详情中的价格
      *
      * @param money money
-     * @return java.util.Map<java.lang.Integer,java.lang.Integer>
+     * @return java.util.Map<java.lang.Integer, java.lang.Integer>
      * @author IamXGW
      * @since 2025/3/25
      */

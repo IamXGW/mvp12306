@@ -20,7 +20,7 @@
                         <div class="col-xs-12">
                             <div class="dataTables_length" id="dynamic-table_length">
                                 展示 <input id="pageSize" type="search" name="pageSize" value="100"
-                                          class="form-control input-sm" aria-controls="dynamic-table">条记录
+                                            class="form-control input-sm" aria-controls="dynamic-table">条记录
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <input id="search-trainNumber" type="search" name="trainNumber"
                                        class="form-control input-sm" placeholder="车次，必填" aria-controls="dynamic-table">
@@ -113,32 +113,32 @@
 
 
 <script id="seatListTemplate" type="x-tmpl-mustache">
-{{#seatList}}
-<tr role="row" data-id="{{id}}"><!--even -->
-    <td><input type="checkbox" class="seat-check" name="id" value="{{id}}"></input></td>
-    <td>{{trainNumber}}</td>
-    <td>{{carriageNumber}}</td>
-    <td>{{rowNumber}}</td>
-    <td>{{seatNumber}}</td>
-    <td>{{fromStation}}</td>
-    <td>{{toStation}}</td>
-    <td>{{showSeatLevel}}</td>
-    <td>{{showStart}}</td>
-    <td>{{showEnd}}</td>
-    <td>{{money}}</td>
-    <td>{{showStatus}}</td>
-    <td>
-        <div class="hidden-sm hidden-xs action-buttons">
-            <a class="green number-edit" href="#" data-id="{{id}}">
-                <i class="ace-icon fa fa-pencil bigger-100"></i>
-            </a>
-            <a class="red number-detail-update" href="#" data-id="{{id}}">
-                <i class="ace-icon fa fa-flag bigger-100"></i>
-            </a>
-        </div>
-    </td>
-</tr>
-{{/seatList}}
+    {{#seatList}}
+    <tr role="row" data-id="{{id}}"><!--even -->
+        <td><input type="checkbox" class="seat-check" name="id" value="{{id}}"></input></td>
+        <td>{{trainNumber}}</td>
+        <td>{{carriageNumber}}</td>
+        <td>{{rowNumber}}</td>
+        <td>{{seatNumber}}</td>
+        <td>{{fromStation}}</td>
+        <td>{{toStation}}</td>
+        <td>{{showSeatLevel}}</td>
+        <td>{{showStart}}</td>
+        <td>{{showEnd}}</td>
+        <td>{{money}}</td>
+        <td>{{showStatus}}</td>
+        <td>
+            <div class="hidden-sm hidden-xs action-buttons">
+                <a class="green number-edit" href="#" data-id="{{id}}">
+                    <i class="ace-icon fa fa-pencil bigger-100"></i>
+                </a>
+                <a class="red number-detail-update" href="#" data-id="{{id}}">
+                    <i class="ace-icon fa fa-flag bigger-100"></i>
+                </a>
+            </div>
+        </td>
+    </tr>
+    {{/seatList}}
 
 </script>
 

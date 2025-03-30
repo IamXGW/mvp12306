@@ -78,7 +78,7 @@ public class TrainSeatController {
             dto.setMoney(trainSeat.getMoney());
             return dto;
         }).collect(Collectors.toList());
-        return JsonData.success();
+        return JsonData.success(PageResult.<TrainSeatDTO>builder().data(dtoList).total(total).build());
     }
 
     @RequestMapping("generate.json")

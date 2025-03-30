@@ -17,7 +17,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +24,6 @@ import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 
  * @author IamXGW
  * @since 2024-07-03 22:22
  */
@@ -120,6 +118,8 @@ public class SeatDataSourceConfig {
     public SqlSessionFactory trainSeatSqlSessionFactory(@Qualifier("trainSeatShardingDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
+        // 添加拦截器
+//        bean.setPlugins(new Interceptor[]{new MybatisSqlInterceptor()});
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:seatMappers/*.xml"));
         return bean.getObject();
     }

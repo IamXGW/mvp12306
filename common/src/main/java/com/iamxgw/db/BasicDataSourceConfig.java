@@ -25,7 +25,6 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * 
  * @author IamXGW
  * @since 2024-07-03 22:21
  */

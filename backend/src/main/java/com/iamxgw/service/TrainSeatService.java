@@ -1,7 +1,6 @@
 package com.iamxgw.service;
 
 import com.google.common.base.Splitter;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
 import com.iamxgw.beans.PageQuery;
@@ -26,6 +25,7 @@ import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -92,10 +92,12 @@ public class TrainSeatService {
         ZoneId zoneId = ZoneId.systemDefault();
         LocalDateTime fromLocalDateTime = LocalDateTime.parse(param.getFromTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         // 座位列表，用于批量更新数据库
-        List<TrainSeat> list = Lists.newArrayList();
+//        List<TrainSeat> list = Lists.newArrayList();
+        List<TrainSeat> list = new ArrayList<>();
         String ticket = fromLocalDateTime.format(DateTimeFormatter.ofPattern("yyyyMMdd"));
         // 遍历车次每一段
         for (TrainNumberDetail trainNumberDetail : detailList) {
+
             // 每一段的发车时间
             Date fromDate = Date.from(fromLocalDateTime.atZone(zoneId).toInstant());
             // 每一段的到达时间

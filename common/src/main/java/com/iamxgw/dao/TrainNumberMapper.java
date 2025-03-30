@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+/**
+ * @author xuguangwei
+ */
 public interface TrainNumberMapper {
     int deleteByPrimaryKey(Integer id);
 

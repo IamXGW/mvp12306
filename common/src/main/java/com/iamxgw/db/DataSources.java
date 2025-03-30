@@ -1,5 +1,8 @@
 package com.iamxgw.db;
 
+/**
+ * @author xuguangwei
+ */
 public interface DataSources {
     String MASTER_DB = "masterDB";
 

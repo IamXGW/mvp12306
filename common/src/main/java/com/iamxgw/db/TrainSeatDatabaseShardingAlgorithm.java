@@ -6,7 +6,6 @@ import io.shardingsphere.api.algorithm.sharding.standard.PreciseShardingAlgorith
 import java.util.Collection;
 
 /**
- * 
  * @author IamXGW
  * @since 2024-07-07 21:38
  */
@@ -20,6 +19,7 @@ public class TrainSeatDatabaseShardingAlgorithm implements PreciseShardingAlgori
         }
         return PREFIX + db;
     }
+
     @Override
     public String doSharding(Collection<String> collection, PreciseShardingValue<Integer> preciseShardingValue) {
         String actualDBName = determineDB(preciseShardingValue.getValue());

@@ -21,7 +21,7 @@ public interface TrainSeatMapper {
 
     int updateByPrimaryKey(TrainSeat record);
 
-    void batchInsert(List<TrainSeat> seatList);
+    void batchInsert(@Param("seatList") List<TrainSeat> list);
 
     List<TrainSeat> searchList(@Param("trainNumberId") int trainNumberId, @Param("ticket") String ticket,
                                @Param("status") Integer status, @Param("carriageNum") Integer carriageNum,

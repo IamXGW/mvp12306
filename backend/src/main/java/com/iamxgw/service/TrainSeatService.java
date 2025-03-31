@@ -1,6 +1,7 @@
 package com.iamxgw.service;
 
 import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
 import com.iamxgw.beans.PageQuery;
@@ -14,12 +15,15 @@ import com.iamxgw.model.TrainNumber;
 import com.iamxgw.model.TrainNumberDetail;
 import com.iamxgw.model.TrainSeat;
 import com.iamxgw.param.GeneratorTicketParam;
+import com.iamxgw.param.PublishTicketParam;
 import com.iamxgw.param.TrainSeatSearchParam;
 import com.iamxgw.seatDao.TrainSeatMapper;
 import com.iamxgw.util.BeanValidator;
+import com.iamxgw.util.StringUtil;
 import javafx.util.Pair;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
@@ -155,4 +159,23 @@ public class TrainSeatService {
         });
         return map;
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void publish(PublishTicketParam param) {
+        BeanValidator.check(param);
+        TrainNumber trainNumber = trainNumberMapper.findByName(param.getTrainNumber());
+        if (trainNumber == null) {
+            throw new BusinessException("车次不存在");
+        }
+        String trainSeatId = param.getTrainSeatIds();
+        List<Long> trainSeatList = StringUtil.splitToListLong(trainSeatId);
+        List<List<Long>> idPartitionList = Lists.partition(trainSeatList, 1000);
+        for (List<Long> partition : idPartitionList) {
+            int cnt = trainSeatMapper.batchPublish(trainNumber.getId(), partition);
+            if (cnt != partition.size()) {
+                throw new BusinessException("部分座位不满足条件，请重新查询[初始]状态的座位进行放票");
+            }
+        }
+    }
+
 }

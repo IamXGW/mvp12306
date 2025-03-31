@@ -31,4 +31,6 @@ public interface TrainSeatMapper {
     int countList(@Param("trainNumberId") int trainNumberId, @Param("ticket") String ticket,
                   @Param("status") Integer status, @Param("carriageNum") Integer carriageNum,
                   @Param("rowNum") Integer rowNum, @Param("seatNum") Integer seatNum);
+
+    int batchPublish(@Param("trainNumberId") int trainNumberId, @Param("trainSeatIdList") List<Long> trainSeatIdList);
 }

@@ -5,6 +5,9 @@ import com.google.common.base.Splitter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author xuguangwei
+ */
 public class StringUtil {
 
     public static List<Long> splitToListLong(String str) {

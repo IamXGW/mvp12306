@@ -7,6 +7,7 @@ import com.iamxgw.dto.TrainSeatDTO;
 import com.iamxgw.model.TrainSeat;
 import com.iamxgw.model.TrainStation;
 import com.iamxgw.param.GeneratorTicketParam;
+import com.iamxgw.param.PublishTicketParam;
 import com.iamxgw.param.TrainSeatSearchParam;
 import com.iamxgw.service.TrainSeatService;
 import com.iamxgw.service.TrainStationService;
@@ -85,6 +86,13 @@ public class TrainSeatController {
     @ResponseBody
     public JsonData generate(GeneratorTicketParam param) {
         trainSeatService.generate(param);
+        return JsonData.success();
+    }
+
+    @RequestMapping("publish.json")
+    @ResponseBody
+    public JsonData publish(PublishTicketParam param) {
+        trainSeatService.publish(param);
         return JsonData.success();
     }
 }

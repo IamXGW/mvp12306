@@ -35,10 +35,10 @@
 <script src="/js/respond.min.js"></script>
 <![endif]-->
 
-<script src="/js/jquery-1.9.1.min.js"></script>
-<script src="/assets/js/jquery-ui.min.js"></script>
-<%--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
-<%--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>--%>
+<%--<script src="/js/jquery-1.9.1.min.js"></script>--%>
+<%--<script src="/assets/js/jquery-ui.min.js"></script>--%>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <script src="/assets/js/jquery.gritter.min.js"></script>
 <script src="/assets/js/chosen.jquery.min.js"></script>
 <%--<script src="http://cdn.bootcss.com/mustache.js/2.2.1/mustache.js"></script>--%>

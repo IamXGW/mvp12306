@@ -1,4 +1,4 @@
-package com.iamxgw.sync;
+package com.iamxgw;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

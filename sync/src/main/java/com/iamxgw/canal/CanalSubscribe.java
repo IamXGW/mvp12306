@@ -4,10 +4,11 @@ import com.alibaba.otter.canal.client.CanalConnector;
 import com.alibaba.otter.canal.client.CanalConnectors;
 import com.alibaba.otter.canal.protocol.CanalEntry.*;
 import com.alibaba.otter.canal.protocol.Message;
+import com.iamxgw.service.TrainNumberService;
 import com.iamxgw.service.TrainSeatService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -20,13 +21,16 @@ import java.util.List;
  */
 @Service
 @Slf4j
-public class CanalSubscribe implements ApplicationListener {
+public class CanalSubscribe implements ApplicationListener<ContextRefreshedEvent> {
 
     @Resource
     TrainSeatService trainSeatService;
 
+    @Resource
+    private TrainNumberService trainNumberService;
+
     @Override
-    public void onApplicationEvent(ApplicationEvent applicationEvent) {
+    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         canalSubscribe();
     }
 
@@ -55,13 +59,14 @@ public class CanalSubscribe implements ApplicationListener {
                         handleEntry(message.getEntries());
                         // 提交确认
                         connector.ack(batchId);
+                        log.info("ack message, batchId:{}, size:{}", batchId, size);
                     } catch (Exception e1) {
                         log.error("canal data handle exception, batchId:{}", batchId, e1);
                         // 处理失败, 回滚数据
                         connector.rollback(batchId);
                     }
                 }
-            } catch (Exception e2){
+            } catch (Exception e2) {
                 log.error("canal subscribe exception", e2);
                 safeSleep(1000);
                 canalSubscribe();
@@ -69,7 +74,7 @@ public class CanalSubscribe implements ApplicationListener {
         }).start();
     }
 
-    private void handleEntry(List<Entry> entrys) {
+    private void handleEntry(List<Entry> entrys) throws Exception {
         for (Entry entry : entrys) {
             if (entry.getEntryType() == EntryType.TRANSACTIONBEGIN || entry.getEntryType() == EntryType.TRANSACTIONEND) {
                 continue;
@@ -98,11 +103,11 @@ public class CanalSubscribe implements ApplicationListener {
         }
     }
 
-    private void handleColumn(List<Column> columns, EventType eventType, String schemaName, String tableName) {
+    private void handleColumn(List<Column> columns, EventType eventType, String schemaName, String tableName) throws Exception {
         if (schemaName.contains("train_seat")) {
             trainSeatService.handle(columns, eventType);
-        } else if ("train_number".equals(schemaName)) {
-
+        } else if ("train_number".equals(tableName)) {
+            trainNumberService.handle(columns, eventType);
         } else {
             log.info("drop data, no need to handle");
         }

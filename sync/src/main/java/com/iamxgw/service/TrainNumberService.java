@@ -99,7 +99,7 @@ public class TrainNumberService {
         } else {
             for (int i = 0; i < detailList.size(); i++) {
                 int tmpFromStationId = detailList.get(i).getFromStationId();
-                for (int j = i + 1; j < detailList.size(); j++) {
+                for (int j = i; j < detailList.size(); j++) {
                     int tmpToStationId = detailList.get(j).getToStationId();
                     list.add(tmpFromStationId + "_" + tmpToStationId);
                 }
@@ -145,11 +145,13 @@ public class TrainNumberService {
             }
         }
 
-        // 批量更新 es 里的数据
-        BulkResponse bulkResponse = esClient.bulk(bulkRequest);
-        log.info("es bulk, response:{}", JsonMapper.obj2String(bulkResponse));
-        if (bulkResponse.hasFailures()) {
-            throw new RuntimeException("es bulk failure");
+        // 当 bulkRequest 里不为空才去批量更新 es 里的数据
+        if (bulkRequest.numberOfActions() > 0) {
+            BulkResponse bulkResponse = esClient.bulk(bulkRequest);
+            log.info("es bulk, response:{}", JsonMapper.obj2String(bulkResponse));
+            if (bulkResponse.hasFailures()) {
+                throw new RuntimeException("es bulk failure");
+            }
         }
     }
 }

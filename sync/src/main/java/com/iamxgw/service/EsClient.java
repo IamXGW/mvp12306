@@ -21,6 +21,8 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 /**
  * @author IamXGW
  * @since 2025-04-20
@@ -51,11 +53,11 @@ public class EsClient implements ApplicationListener<ContextRefreshedEvent> {
     }
 
     private void init() {
-        log.info("EsClient init...");
+        log.info("EsClient init start");
         basicHeaders = new BasicHeader[]{
-                new BasicHeader("Accept", "application/json; charSet=UTF-8")
+                new BasicHeader("Accept", "application/json; charset=UTF-8")
         };
-        RestClientBuilder builder = RestClient.builder(new HttpHost("47.100.178.16", 9200, "http"));
+        RestClientBuilder builder = RestClient.builder(new HttpHost("127.0.0.1", 9200, "http"));
         builder.setDefaultHeaders(basicHeaders)
                 .setRequestConfigCallback((RequestConfig.Builder configBuilder) -> {
                     configBuilder.setConnectTimeout(CONNECT_TIMEOUT);
